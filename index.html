@@ -4,45 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>London & Edinburgh — July 2026</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #F1EFE9;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    padding: 24px 16px 60px;
-  }
-  h1 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #1A1A1A;
-    margin-bottom: 2px;
-  }
-  #tabs::-webkit-scrollbar { display: none; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #F1EFE9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 24px 16px 60px;
+}
+#app { max-width: 720px; margin: 0 auto; }
+h1 { font-size: 1.4rem; font-weight: 600; color: #1A1A1A; margin-bottom: 2px; }
 </style>
 </head>
 <body>
-
-<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">London and Edinburgh trip planner, 18–25 July 2026, tap a day to view activities</h2>
-
-<div style="padding:1rem 0;max-width:640px;margin:0 auto">
-  <h1>London & Edinburgh</h1>
-  <div style="margin-bottom:1.5rem">
-    <p style="font-size:13px;color:#8A8A8A;margin:0">18–25 July 2026 · tap a day · tap an activity for details</p>
-  </div>
-
-  <div id="tabs" style="display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none"></div>
-
-  <div style="margin-bottom:12px">
-    <p id="day-headline" style="font-size:13px;color:#8A8A8A;margin:0"></p>
-  </div>
-
-  <div id="activities"></div>
-
-  <div id="daynav" style="display:flex;justify-content:space-between;margin-top:20px"></div>
-</div>
-
+<div id="app"></div>
 <script>
+
 const C = {
   travel:   {hex:'#2C6FA8',bg:'#EBF3FA',label:'Travel'},
   train:    {hex:'#2C6FA8',bg:'#EBF3FA',label:'Train'},
@@ -61,9 +37,9 @@ const DAYS = [
     {t:'5:00pm',c:'dining',n:'Bancone · Golden Square',d:'5:00–6:30pm · Italian pasta',x:'Ref #99KP6C4DR75R · 5 min walk from hotel'},
     {t:'7:00pm',c:'outdoors',n:'Ted Lasso · Richmond',d:'Paved Court · Richmond Green · Prince\'s Head · Thames',x:'Train from Waterloo ~30m · golden hour light · back by 9:30pm'},
   ]},
-  {short:'Sun 19',date:'Sunday 19 July',hl:'Flower Market · Two roasts · British Library',acts:[
+  {short:'Sun 19',date:'Sunday 19 July',hl:'Flower Market · British Library · Fallow',acts:[
     {t:'9:00am',c:'shopping',n:'Columbia Road Flower Market',d:'Spitalfields · Sunday only · open till 3pm',x:'Cab from Soho ~30m · leave by 10:30'},
-    {t:'1:00pm',c:'culture',n:'British Library · King\'s Cross',d:'Treasures Gallery · Magna Carta · Beatles lyrics · Da Vinci',x:'Closes 5pm · cab from Mayfair ~20m'},
+    {t:'1:00pm',c:'culture',n:'British Library · King\'s Cross',d:'Treasures Gallery · Magna Carta · Beatles lyrics · Da Vinci',x:'Closes 5pm · cab from Soho ~20m'},
     {t:'8:30pm',c:'dining',n:'Fallow · St James\'s Market',d:'8:30pm reservation',x:'5 min walk from Soho'},
   ]},
   {short:'Mon 20',date:'Monday 20 July',hl:'LNER to Edinburgh',acts:[
@@ -113,19 +89,29 @@ const DAYS = [
   ]},
 ];
 
-let day = 0, open = null;
+let view = 'day', day = 0, open = null;
 
-function render(){
-  const tabs = document.getElementById('tabs');
-  tabs.innerHTML = DAYS.map((d,i)=>`<button onclick="sel(${i})" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1px solid ${i===day?'transparent':'#E0DBD0'};background:${i===day?'#1A1A1A':'#FFFFFF'};color:${i===day?'#FFFFFF':'#6B6B6B'};font-size:13px;font-weight:500;cursor:pointer">${d.short}</button>`).join('');
+function parseHour(t) {
+  const m = t.match(/(\d+):(\d+)(am|pm)/i);
+  if (!m) return -1;
+  let h = parseInt(m[1]);
+  const p = m[3].toLowerCase();
+  if (p === 'pm' && h !== 12) h += 12;
+  if (p === 'am' && h === 12) h = 0;
+  return h;
+}
 
-  document.getElementById('day-headline').textContent = DAYS[day].hl;
+function toggle(label, active) {
+  return `<button onclick="setView('${label.toLowerCase()}')" style="padding:6px 16px;border-radius:20px;border:1px solid ${active?'transparent':'#E0DBD0'};background:${active?'#1A1A1A':'#FFFFFF'};color:${active?'#FFFFFF':'#6B6B6B'};font-size:13px;font-weight:500;cursor:pointer">${label}</button>`;
+}
 
-  const acts = document.getElementById('activities');
-  acts.innerHTML = DAYS[day].acts.map((a,i)=>{
+function renderDay() {
+  const tabs = DAYS.map((d,i)=>`<button onclick="sel(${i})" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1px solid ${i===day?'transparent':'#E0DBD0'};background:${i===day?'#1A1A1A':'#FFFFFF'};color:${i===day?'#FFFFFF':'#6B6B6B'};font-size:13px;font-weight:500;cursor:pointer">${d.short}</button>`).join('');
+
+  const acts = DAYS[day].acts.map((a,i)=>{
     const co = C[a.c];
     const isOpen = open===i;
-    return `<div onclick="tog(${i})" style="background:#FFFFFF;border-radius:10px;margin-bottom:8px;border-left:3px solid ${co.hex};cursor:pointer;transition:box-shadow .15s" onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.07)'" onmouseout="this.style.boxShadow='none'">
+    return `<div onclick="tog(${i})" style="background:#FFFFFF;border-radius:10px;margin-bottom:8px;border-left:3px solid ${co.hex};cursor:pointer" onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.07)'" onmouseout="this.style.boxShadow='none'">
       <div style="display:flex;align-items:center;gap:10px;padding:12px 14px">
         <span style="font-size:12px;font-weight:600;color:#8A8A8A;width:52px;flex-shrink:0">${a.t}</span>
         <span style="flex:1;font-size:14px;font-weight:500;color:#1A1A1A">${a.n}</span>
@@ -139,15 +125,82 @@ function render(){
     </div>`;
   }).join('');
 
-  const nav = document.getElementById('daynav');
-  nav.innerHTML = `
+  const nav = `
     ${day>0?`<button onclick="sel(${day-1})" style="padding:8px 16px;border-radius:20px;border:1px solid #E0DBD0;background:#FFFFFF;font-size:13px;font-weight:500;cursor:pointer;color:#1A1A1A">← ${DAYS[day-1].short}</button>`:'<span></span>'}
     ${day<DAYS.length-1?`<button onclick="sel(${day+1})" style="padding:8px 16px;border-radius:20px;border:1px solid #E0DBD0;background:#FFFFFF;font-size:13px;font-weight:500;cursor:pointer;color:#1A1A1A">${DAYS[day+1].short} →</button>`:'<span></span>'}
   `;
+
+  return `
+    <div id="day-tabs" style="display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none">${tabs}</div>
+    <p style="font-size:13px;color:#8A8A8A;margin:0 0 12px">${DAYS[day].hl}</p>
+    <div>${acts}</div>
+    <div style="display:flex;justify-content:space-between;margin-top:20px">${nav}</div>
+  `;
 }
 
-function sel(i){ day=i; open=null; render(); const t=document.querySelectorAll('#tabs button'); if(t[i]) t[i].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }
-function tog(i){ open=open===i?null:i; render(); }
+function renderWeek() {
+  const hours  = [8,9,10,11,12,13,14,15,16,17,18,19,20,21];
+  const labels = ['8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm'];
+
+  const actMap = {};
+  DAYS.forEach((d,di) => {
+    actMap[di] = {};
+    d.acts.forEach((a,ai) => {
+      const h = parseHour(a.t);
+      if (h < 0) return;
+      if (!actMap[di][h]) actMap[di][h] = [];
+      actMap[di][h].push({a,ai});
+    });
+  });
+
+  let g = `<div style="overflow-x:auto;border:1px solid #E0DBD0;border-radius:10px"><div style="display:grid;grid-template-columns:50px repeat(8,minmax(105px,1fr));min-width:900px">`;
+
+  g += `<div style="background:#F5F3EE;border-bottom:2px solid #E0DBD0;padding:8px 4px"></div>`;
+  DAYS.forEach(d => {
+    g += `<div style="background:#F5F3EE;border-bottom:2px solid #E0DBD0;border-left:1px solid #E0DBD0;padding:8px 4px;text-align:center;font-size:11px;font-weight:600;color:#1A1A1A">${d.short}</div>`;
+  });
+
+  hours.forEach((h,hi) => {
+    g += `<div style="background:#F5F3EE;border-right:2px solid #E0DBD0;border-bottom:1px solid #E0DBD0;padding:4px 5px 0 0;font-size:10px;font-weight:600;color:#8A8A8A;text-align:right">${labels[hi]}</div>`;
+    DAYS.forEach((_,di) => {
+      const items = actMap[di][h] || [];
+      const cells = items.map(({a,ai}) => {
+        const co = C[a.c];
+        return `<div onclick="goToAct(${di},${ai})" style="background:${co.bg};border-left:2px solid ${co.hex};border-radius:2px;padding:2px 4px;margin-bottom:2px;cursor:pointer" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
+          <div style="font-size:9px;font-weight:600;color:${co.hex}">${a.t}</div>
+          <div style="font-size:10px;color:#1A1A1A;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${a.n}</div>
+        </div>`;
+      }).join('');
+      g += `<div style="border-left:1px solid #E0DBD0;border-bottom:1px solid #E0DBD0;padding:2px;min-height:50px;background:${items.length?'#FFFFFF':'#FAFAF8'}">${cells}</div>`;
+    });
+  });
+
+  g += `</div></div><p style="font-size:11px;color:#8A8A8A;margin-top:8px">Tap any activity to open day view with full details</p>`;
+  return g;
+}
+
+function render() {
+  document.getElementById('app').innerHTML = `
+    <div style="margin-bottom:20px">
+      <h1>London & Edinburgh</h1>
+      <p style="font-size:13px;color:#8A8A8A;margin:4px 0 0">18–25 July 2026</p>
+    </div>
+    <div style="display:flex;gap:6px;margin-bottom:20px">
+      ${toggle('Day', view==='day')}
+      ${toggle('Week', view==='week')}
+    </div>
+    ${view==='day' ? renderDay() : renderWeek()}
+  `;
+  if (view==='day') {
+    const t = document.querySelectorAll('#day-tabs button');
+    if (t[day]) t[day].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  }
+}
+
+function setView(v)         { view=v; render(); }
+function sel(i)             { day=i; open=null; render(); }
+function tog(i)             { open=open===i?null:i; render(); }
+function goToAct(di,ai)     { view='day'; day=di; open=ai; render(); window.scrollTo(0,0); }
 
 render();
 </script>

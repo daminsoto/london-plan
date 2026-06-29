@@ -3,335 +3,154 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>London + Edinburgh — Timeline</title>
+<title>London & Edinburgh — July 2026</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
-
-  :root {
-    --paper: #F1EFE9;
-    --ink: #2E2B27;
-    --muted: #8C857A;
-    --border: #E1DBCB;
-    --london:   #C4A882;
-    --east:     #C87952;
-    --central:  #5B8FAF;
-    --south:    #4A8070;
-    --theatre:  #8B2E2E;
-    --away:     #8B7B6E;
-    --edinburgh:#6B5480;
-    --transit:  #777;
-    --scotland: #4A7B5A;
-  }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
-    padding: 20px 14px 40px;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 12px;
+    background: #F1EFE9;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 24px 16px 60px;
   }
-
   h1 {
-    font-family: 'Newsreader', serif;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 4px;
-  }
-
-  .subtitle {
-    color: var(--muted);
-    font-size: 0.78rem;
-    margin-bottom: 18px;
-  }
-
-  .wrapper {
-    overflow-x: auto;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: white;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 55px repeat(8, minmax(155px, 1fr));
-    min-width: 1300px;
-  }
-
-  .th {
-    background: #f7f5f0;
-    border-bottom: 2px solid var(--border);
-    border-right: 1px solid var(--border);
-    padding: 8px 4px;
-    text-align: center;
-    font-family: 'Newsreader', serif;
-  }
-  .th .dow {
-    display: block;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
+    color: #1A1A1A;
     margin-bottom: 2px;
   }
-  .th .d { font-size: 1rem; font-weight: 600; }
-
-  .tl {
-    background: #f7f5f0;
-    border-right: 2px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    text-align: right;
-    padding: 5px 6px 0 0;
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: var(--muted);
-  }
-
-  .tc {
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 3px;
-    min-height: 54px;
-    background: white;
-  }
-  .tc.empty { background: #fafaf8; }
-
-  .block {
-    border-radius: 4px;
-    padding: 4px 5px;
-    color: white;
-    font-size: 0.68rem;
-    line-height: 1.3;
-    height: 100%;
-    min-height: 47px;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-  .block.cont { opacity: 0.65; border-top: 2px solid rgba(255,255,255,0.35); }
-  .bt { font-weight: 600; font-size: 0.72rem; }
-  .bd { font-size: 0.62rem; opacity: 0.92; }
-  .bx { font-size: 0.6rem; opacity: 0.85; font-style: italic; margin-top: 1px; }
-
-  .london    { background: var(--london); }
-  .east      { background: var(--east); }
-  .central   { background: var(--central); }
-  .south     { background: var(--south); }
-  .theatre   { background: var(--theatre); }
-  .away      { background: var(--away); }
-  .edinburgh { background: var(--edinburgh); }
-  .transit   { background: var(--transit); }
-  .scotland  { background: var(--scotland); }
-
-  .legend {
-    margin-top: 18px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-    font-size: 0.7rem;
-  }
-  .li { display: flex; align-items: center; gap: 5px; }
-  .sw { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
-
-  .note {
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 0.7rem;
-    line-height: 1.6;
-    max-width: 900px;
-  }
+  #tabs::-webkit-scrollbar { display: none; }
 </style>
 </head>
 <body>
 
-<h1>London & Edinburgh — Day-by-Day Timeline</h1>
-<p class="subtitle">18–25 July 2026 · Hours run top to bottom · scroll right for full week · faded blocks = same activity continuing</p>
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">London and Edinburgh trip planner, 18–25 July 2026, tap a day to view activities</h2>
 
-<div class="wrapper">
-<div class="grid">
+<div style="padding:1rem 0;max-width:640px;margin:0 auto">
+  <h1>London & Edinburgh</h1>
+  <div style="margin-bottom:1.5rem">
+    <p style="font-size:13px;color:#8A8A8A;margin:0">18–25 July 2026 · tap a day · tap an activity for details</p>
+  </div>
 
-  <!-- HEADER -->
-  <div class="th" style="border-bottom:2px solid var(--border)"></div>
-  <div class="th"><span class="dow">Sat</span><span class="d">18</span></div>
-  <div class="th"><span class="dow">Sun</span><span class="d">19</span></div>
-  <div class="th"><span class="dow">Mon</span><span class="d">20</span></div>
-  <div class="th"><span class="dow">Tue</span><span class="d">21</span></div>
-  <div class="th"><span class="dow">Wed</span><span class="d">22</span></div>
-  <div class="th"><span class="dow">Thu</span><span class="d">23</span></div>
-  <div class="th"><span class="dow">Fri</span><span class="d">24</span></div>
-  <div class="th"><span class="dow">Sat</span><span class="d">25</span></div>
+  <div id="tabs" style="display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;scrollbar-width:none"></div>
 
-  <!-- 8am -->
-  <div class="tl">8am</div>
-  <div class="tc empty"></div>
-  <div class="tc empty"></div>
-  <div class="tc empty"></div>
-  <div class="tc empty"></div>
-  <div class="tc empty"></div>
-  <div class="tc"><div class="block transit"><div class="bt">Euston → Watford Jn</div><div class="bd">Train ~20m, shuttle ~15m</div><div class="bx">Leave hotel by 7:45am</div></div></div>
-  <div class="tc empty"></div>
-  <div class="tc empty"></div>
+  <div style="margin-bottom:12px">
+    <p id="day-headline" style="font-size:13px;color:#8A8A8A;margin:0"></p>
+  </div>
 
-  <!-- 9am -->
-  <div class="tl">9am</div>
-  <div class="tc empty"></div>
-  <div class="tc"><div class="block east"><div class="bt">Columbia Road Market</div><div class="bd">Spitalfields · open till 3pm</div><div class="bx">Cab/Uber from Soho ~30m</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Kings Cross</div><div class="bd">LNER departs 09:30</div><div class="bx">Tube from Soho ~15m</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Lannan Bakery</div><div class="bd">Stockbridge · pre-order pickup</div><div class="bx">Cab/bus ~10m from hotel</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Breakfast</div><div class="bd">Final Edinburgh morning</div></div></div>
-  <div class="tc"><div class="block away"><div class="bt">Harry Potter Studio</div><div class="bd">Warner Bros · Leavesden</div><div class="bx">Arrive studio ~9:10am</div></div></div>
-  <div class="tc empty"></div>
-  <div class="tc"><div class="block london"><div class="bt">Final brunch</div><div class="bd">Soho area</div></div></div>
+  <div id="activities"></div>
 
-  <!-- 10am -->
-  <div class="tl">10am</div>
-  <div class="tc empty"></div>
-  <div class="tc"><div class="block east cont"><div class="bt">Columbia Road cont.</div><div class="bx">Leave by 10:30 → cab to Hawksmoor ~25m</div></div></div>
-  <div class="tc"><div class="block transit cont"><div class="bt">LNER en route</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Walk to Castle</div><div class="bx">From The Scotsman ~10m walk</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Head to Waverley</div><div class="bd">Be there by 10:30am</div><div class="bx">5m walk from hotel</div></div></div>
-  <div class="tc"><div class="block away cont"><div class="bt">Studio Tour cont.</div><div class="bd">Great Hall · Diagon Alley</div></div></div>
-  <div class="tc"><div class="block south"><div class="bt">Bermondsey Galleries</div><div class="bd">White Cube + area</div><div class="bx">Tube to London Bridge ~15m</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Last wander / flex</div><div class="bd">Richmond if missed Sat 18</div><div class="bx">Train Waterloo → Richmond ~30m, back by 1pm</div></div></div>
-
-  <!-- 11am -->
-  <div class="tl">11am</div>
-  <div class="tc empty"></div>
-  <div class="tc"><div class="block london"><div class="bt">Hawksmoor Air Street</div><div class="bd">Mayfair · 11:00 seating</div></div></div>
-  <div class="tc"><div class="block transit cont"><div class="bt">LNER en route</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Edinburgh Castle</div><div class="bd">Pre-booked 11:30am</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">LNER departs 11:00</div><div class="bd">Edinburgh Waverley</div></div></div>
-  <div class="tc"><div class="block away cont"><div class="bt">Studio Tour cont.</div><div class="bd">Platform 9¾</div></div></div>
-  <div class="tc"><div class="block south cont"><div class="bt">Galleries cont.</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Pack / store bags</div></div></div>
-
-  <!-- 12pm -->
-  <div class="tl" style="border-top:2px dashed #ddd">12pm</div>
-  <div class="tc empty"></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Hawksmoor cont.</div></div></div>
-  <div class="tc"><div class="block transit cont"><div class="bt">LNER en route</div><div class="bd">Lunch on board</div></div></div>
-  <div class="tc"><div class="block edinburgh cont"><div class="bt">Castle cont.</div></div></div>
-  <div class="tc"><div class="block transit cont"><div class="bt">En route to London</div></div></div>
-  <div class="tc"><div class="block away cont"><div class="bt">Studio Tour cont.</div></div></div>
-  <div class="tc"><div class="block south"><div class="bt">Lunch</div><div class="bd">Bermondsey Street</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Free time</div></div></div>
-
-  <!-- 1pm -->
-  <div class="tl">1pm</div>
-  <div class="tc"><div class="block transit"><div class="bt">BA48 lands ~1:45pm</div><div class="bd">Heathrow T5</div><div class="bx">Elizabeth Line or taxi → Soho ~50m</div></div></div>
-  <div class="tc"><div class="block central"><div class="bt">British Library</div><div class="bd">King's Cross / St Pancras</div><div class="bx">Cab from Mayfair ~20m</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Arrive Edinburgh 13:38</div><div class="bx">Walk to The Scotsman, 5m</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Lunch near Castle</div><div class="bd">Castlehill area</div></div></div>
-  <div class="tc"><div class="block transit cont"><div class="bt">En route</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Return transit</div><div class="bd">Shuttle + Watford Jn → Euston</div><div class="bx">Back in London ~2pm</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Tube to Holborn</div><div class="bx">London Bridge → Holborn ~15m</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Free time</div></div></div>
-
-  <!-- 2pm -->
-  <div class="tl">2pm</div>
-  <div class="tc"><div class="block transit cont"><div class="bt">In transit</div><div class="bx">→ The Resident Soho</div></div></div>
-  <div class="tc"><div class="block central cont"><div class="bt">British Library</div><div class="bd">Treasures Gallery</div><div class="bx">Magna Carta · Beatles lyrics · Da Vinci</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Check in</div><div class="bd">The Scotsman · North Bridge</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Train EDI → Glasgow</div><div class="bd">Depart Waverley ~2:30</div><div class="bx">Arrive Glasgow Queen St ~3:20</div></div></div>
-  <div class="tc"><div class="block transit cont"><div class="bt">En route</div></div></div>
-  <div class="tc"><div class="block london"><div class="bt">Back in London</div><div class="bd">Rest / freshen up</div></div></div>
-  <div class="tc"><div class="block central"><div class="bt">L. Cornelissen & Son</div><div class="bd">Great Russell St · Bloomsbury</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Head to Heathrow</div><div class="bd">Black cab ~50m</div><div class="bx">Leave hotel by 2pm</div></div></div>
-
-  <!-- 3pm -->
-  <div class="tl">3pm</div>
-  <div class="tc"><div class="block london"><div class="bt">Check in · The Resident</div><div class="bd">Soho base · settle in</div></div></div>
-  <div class="tc"><div class="block central cont"><div class="bt">British Library cont.</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Royal Mile</div><div class="bd">St Giles' Cathedral · explore</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Train Glasgow → Balloch</div><div class="bd">Depart Queen St ~3:30</div><div class="bx">Arrive Loch Lomond ~4:20</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Arrive Kings Cross 15:10</div><div class="bx">Cab to The Resident ~20m</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Free time</div></div></div>
-  <div class="tc"><div class="block central"><div class="bt">Present & Correct</div><div class="bd">Exmouth Market · Clerkenwell</div><div class="bx">Walk/tube from Holborn ~20m</div></div></div>
-  <div class="tc"><div class="block transit cont"><div class="bt">En route Heathrow</div></div></div>
-
-  <!-- 4pm -->
-  <div class="tl">4pm</div>
-  <div class="tc"><div class="block london"><div class="bt">Freshen up</div><div class="bd">The Resident Soho</div></div></div>
-  <div class="tc"><div class="block central cont"><div class="bt">British Library cont.</div><div class="bx">Closes 5pm</div></div></div>
-  <div class="tc"><div class="block edinburgh cont"><div class="bt">Old Town explore</div></div></div>
-  <div class="tc"><div class="block scotland"><div class="bt">Loch Lomond</div><div class="bd">Arrive ~4:20 · West Highland Line</div><div class="bx">Left-side seat for best views going up</div></div></div>
-  <div class="tc"><div class="block london"><div class="bt">Back at The Resident</div><div class="bd">Freshen up</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Free time</div></div></div>
-  <div class="tc"><div class="block central"><div class="bt">Choosing Keeping</div><div class="bd">Tower St · Covent Garden</div><div class="bx">Tube/cab from Clerkenwell ~15m</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">At Heathrow</div><div class="bd">Check-in · Security · Lounge</div></div></div>
-
-  <!-- 5pm -->
-  <div class="tl">5pm</div>
-  <div class="tc"><div class="block theatre"><div class="bt">Bancone</div><div class="bd">Golden Square · 5:00–6:30pm</div><div class="bx">Ref #99KP6C4DR75R · 5 min walk from hotel</div></div></div>
-  <div class="tc"><div class="block london"><div class="bt">Back to Soho</div><div class="bd">Freshen up · library closes 5pm</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Free / freshen up</div></div></div>
-  <div class="tc"><div class="block scotland cont"><div class="bt">Loch Lomond</div><div class="bd">Walk · views · coffee</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Free time</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Free</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Freshen up</div><div class="bd">Head toward theatre area</div></div></div>
-  <div class="tc"><div class="block transit cont"><div class="bt">BA49 departs 4:30pm</div><div class="bd">Heathrow → Seattle</div></div></div>
-
-  <!-- 6pm -->
-  <div class="tl">6pm</div>
-  <div class="tc"><div class="block theatre cont"><div class="bt">Bancone cont.</div><div class="bx">Ends 6:30pm</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Evening free</div></div></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Dinner · Old Town</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Return · Balloch → Glasgow</div><div class="bx">Depart ~6:30 · arrive Glasgow ~7:20</div></div></div>
-  <div class="tc"><div class="block theatre"><div class="bt">Dinner near Trafalgar</div></div></div>
-  <div class="tc"><div class="block theatre"><div class="bt">Dinner near theatre</div></div></div>
-  <div class="tc"><div class="block theatre"><div class="bt">Dinner near Novello</div></div></div>
-  <div class="tc empty"></div>
-
-  <!-- 7pm -->
-  <div class="tl">7pm</div>
-  <div class="tc"><div class="block away"><div class="bt">Ted Lasso · Richmond</div><div class="bd">Post-dinner · great evening light in July</div><div class="bx">Train from Waterloo ~30m</div></div></div>
-  <div class="tc"><div class="block london cont"><div class="bt">Free before Fallow</div></div></div>
-  <div class="tc"><div class="block edinburgh cont"><div class="bt">Dinner cont.</div></div></div>
-  <div class="tc"><div class="block transit"><div class="bt">Glasgow → Edinburgh</div><div class="bx">Depart ~7:30 · arrive ~8:20</div></div></div>
-  <div class="tc"><div class="block theatre"><div class="bt">Oh, Mary!</div><div class="bd">Trafalgar Theatre · 7:30pm</div></div></div>
-  <div class="tc"><div class="block theatre"><div class="bt">Disney's Hercules</div><div class="bd">7:30pm</div></div></div>
-  <div class="tc"><div class="block theatre"><div class="bt">Mamma Mia!</div><div class="bd">Novello Theatre · 7:30pm</div></div></div>
-  <div class="tc empty"></div>
-
-  <!-- 8pm -->
-  <div class="tl">8pm</div>
-  <div class="tc"><div class="block away cont"><div class="bt">Richmond cont.</div><div class="bd">Paved Court · Green · Prince's Head · Thames</div></div></div>
-  <div class="tc"><div class="block theatre"><div class="bt">Fallow · 8:30pm</div><div class="bd">St James's Market</div></div></div>
-  <div class="tc empty"></div>
-  <div class="tc"><div class="block edinburgh"><div class="bt">Back in Edinburgh</div><div class="bd">Late dinner · Stockbridge/New Town</div></div></div>
-  <div class="tc"><div class="block theatre cont"><div class="bt">Oh, Mary! cont.</div><div class="bd">80 min · no interval · ends ~9:00</div></div></div>
-  <div class="tc"><div class="block theatre cont"><div class="bt">Hercules cont.</div></div></div>
-  <div class="tc"><div class="block theatre cont"><div class="bt">Mamma Mia! cont.</div></div></div>
-  <div class="tc empty"></div>
-
-  <!-- 9pm -->
-  <div class="tl">9pm</div>
-  <div class="tc"><div class="block transit"><div class="bt">Return to Soho</div><div class="bx">Train back ~30m, home by 9:30</div></div></div>
-  <div class="tc"><div class="block theatre cont"><div class="bt">Fallow cont.</div></div></div>
-  <div class="tc empty"></div>
-  <div class="tc"><div class="block edinburgh cont"><div class="bt">Late dinner cont.</div></div></div>
-  <div class="tc"><div class="block london"><div class="bt">Oh, Mary! ends ~9:00</div><div class="bx">Head back to Soho</div></div></div>
-  <div class="tc"><div class="block theatre cont"><div class="bt">Hercules ends ~9:30</div></div></div>
-  <div class="tc"><div class="block theatre cont"><div class="bt">Mamma Mia! ends ~9:30</div></div></div>
-  <div class="tc empty"></div>
-
-</div>
+  <div id="daynav" style="display:flex;justify-content:space-between;margin-top:20px"></div>
 </div>
 
-<div class="legend">
-  <div class="li"><span class="sw" style="background:var(--london)"></span> Soho / London base</div>
-  <div class="li"><span class="sw" style="background:var(--east)"></span> East London (Spitalfields)</div>
-  <div class="li"><span class="sw" style="background:var(--central)"></span> Bloomsbury / Central</div>
-  <div class="li"><span class="sw" style="background:var(--south)"></span> Bermondsey / South</div>
-  <div class="li"><span class="sw" style="background:var(--theatre)"></span> West End / Theatres</div>
-  <div class="li"><span class="sw" style="background:var(--away)"></span> Out of London</div>
-  <div class="li"><span class="sw" style="background:var(--edinburgh)"></span> Edinburgh</div>
-  <div class="li"><span class="sw" style="background:var(--scotland)"></span> Highlands / Loch Lomond</div>
-  <div class="li"><span class="sw" style="background:var(--transit)"></span> Travel / Transit</div>
-</div>
+<script>
+const C = {
+  travel:   {hex:'#2C6FA8',bg:'#EBF3FA',label:'Travel'},
+  train:    {hex:'#2C6FA8',bg:'#EBF3FA',label:'Train'},
+  dining:   {hex:'#B8520A',bg:'#FBF0E8',label:'Dining'},
+  shows:    {hex:'#6B3FA0',bg:'#F2EBF9',label:'Shows'},
+  shopping: {hex:'#1F7A58',bg:'#E8F5EF',label:'Shopping'},
+  culture:  {hex:'#7A5520',bg:'#F5EDE0',label:'Culture'},
+  rest:     {hex:'#4A607A',bg:'#EBF0F5',label:'Rest'},
+  outdoors: {hex:'#2A6B40',bg:'#E8F4EC',label:'Outdoors'},
+};
 
-<p class="note">Faded blocks = same activity continuing into next hour. Transit notes are realistic estimates — add a few minutes buffer for connections. Black cabs are ideal for late show nights: faster than the Tube post-theatre, especially Fri/Sat. Saturday 18 is empty until 1pm by design — that's when the plane lands.</p>
+const DAYS = [
+  {short:'Sat 18',date:'Saturday 18 July',hl:'Arrival · Bancone · Richmond',acts:[
+    {t:'1:45pm',c:'travel',n:'BA48 lands · Heathrow T5',d:'Elizabeth Line or taxi to Soho',x:'~50 min to hotel'},
+    {t:'3:00pm',c:'rest',n:'Check in · The Resident Soho',d:'Golden Square area',x:null},
+    {t:'5:00pm',c:'dining',n:'Bancone · Golden Square',d:'5:00–6:30pm · Italian pasta',x:'Ref #99KP6C4DR75R · 5 min walk from hotel'},
+    {t:'7:00pm',c:'outdoors',n:'Ted Lasso · Richmond',d:'Paved Court · Richmond Green · Prince\'s Head · Thames',x:'Train from Waterloo ~30m · golden hour light · back by 9:30pm'},
+  ]},
+  {short:'Sun 19',date:'Sunday 19 July',hl:'Flower Market · Two roasts · British Library',acts:[
+    {t:'9:00am',c:'shopping',n:'Columbia Road Flower Market',d:'Spitalfields · Sunday only · open till 3pm',x:'Cab from Soho ~30m · leave by 10:30'},
+    {t:'11:00am',c:'dining',n:'Hawksmoor Air Street',d:'Sunday roast · 11:00 seating · Mayfair',x:'Cab from market ~25m'},
+    {t:'1:00pm',c:'culture',n:'British Library · King\'s Cross',d:'Treasures Gallery · Magna Carta · Beatles lyrics · Da Vinci',x:'Closes 5pm · cab from Mayfair ~20m'},
+    {t:'8:30pm',c:'dining',n:'Fallow · St James\'s Market',d:'8:30pm reservation',x:'5 min walk from Soho'},
+  ]},
+  {short:'Mon 20',date:'Monday 20 July',hl:'LNER to Edinburgh',acts:[
+    {t:'9:00am',c:'train',n:'Kings Cross · LNER departs 09:30',d:'Scenic east coast route · ~4h journey',x:'Tube from Soho ~15m · be there by 9:00'},
+    {t:'1:38pm',c:'train',n:'Arrive Edinburgh Waverley',d:'Walk to The Scotsman · 5 min',x:'North Bridge · right on the Old Town edge'},
+    {t:'3:00pm',c:'culture',n:'Royal Mile',d:'St Giles\' Cathedral · Old Town explore',x:null},
+    {t:'7:00pm',c:'dining',n:'Dinner · Old Town',d:'Edinburgh restaurant',x:null},
+  ]},
+  {short:'Tue 21',date:'Tuesday 21 July',hl:'Castle · Loch Lomond',acts:[
+    {t:'9:00am',c:'dining',n:'Lannan Bakery · Stockbridge',d:'Pre-order pickup · award-winning viennoiserie',x:'Cab ~10m from hotel · open 9am'},
+    {t:'11:30am',c:'culture',n:'Edinburgh Castle',d:'Pre-booked 11:30am · allow ~2 hrs',x:null},
+    {t:'1:30pm',c:'dining',n:'Lunch near Castlehill',d:'Quick bite before trains',x:null},
+    {t:'2:30pm',c:'train',n:'EDI → Glasgow → Loch Lomond',d:'West Highland Line · scenic',x:'Left-side seat for best loch views going north'},
+    {t:'4:20pm',c:'outdoors',n:'Loch Lomond',d:'Walk · views · coffee · Highland scenery',x:'Return train departs ~6:30pm'},
+    {t:'6:30pm',c:'train',n:'Return · Balloch → Glasgow → EDI',d:'Arrive Edinburgh ~8:20pm',x:null},
+    {t:'8:30pm',c:'dining',n:'Late dinner · Stockbridge or New Town',d:'Edinburgh evening',x:null},
+  ]},
+  {short:'Wed 22',date:'Wednesday 22 July',hl:'LNER home · Oh, Mary!',acts:[
+    {t:'9:00am',c:'rest',n:'Final Edinburgh morning',d:'Breakfast · last wander',x:'Dean Village or slow start'},
+    {t:'11:00am',c:'train',n:'LNER departs Edinburgh 11:00',d:'Arrives Kings Cross 15:10',x:'Relax on board'},
+    {t:'3:30pm',c:'rest',n:'Back at The Resident Soho',d:'Freshen up',x:'Cab from Kings Cross ~20m'},
+    {t:'6:00pm',c:'dining',n:'Dinner near Trafalgar Theatre',d:'Pre-show · St Martin\'s Lane area',x:'Theatre is 15 min walk from hotel'},
+    {t:'7:30pm',c:'shows',n:'Oh, Mary! · Trafalgar Theatre',d:'80 min · no interval · Cole Escola in the title role',x:'Ends ~9:00pm'},
+  ]},
+  {short:'Thu 23',date:'Thursday 23 July',hl:'Harry Potter · Disney\'s Hercules',acts:[
+    {t:'8:00am',c:'travel',n:'Euston → Watford Junction',d:'Train ~20m + shuttle ~15m',x:'Leave hotel by 7:45am'},
+    {t:'9:15am',c:'culture',n:'Harry Potter Studio Tour',d:'Great Hall · Diagon Alley · Platform 9¾ · ~3.5 hrs',x:'Book the earliest slot'},
+    {t:'1:00pm',c:'travel',n:'Return to London',d:'Shuttle + Watford Jn → Euston',x:'Back by ~2pm'},
+    {t:'2:00pm',c:'rest',n:'Rest · free afternoon',d:'Back at The Resident',x:null},
+    {t:'6:00pm',c:'dining',n:'Dinner near theatre',d:'Pre-show',x:null},
+    {t:'7:30pm',c:'shows',n:'Disney\'s Hercules',d:'7:30pm',x:'Ends ~9:30pm'},
+  ]},
+  {short:'Fri 24',date:'Friday 24 July',hl:'Stationery crawl · Mamma Mia!',acts:[
+    {t:'10:00am',c:'culture',n:'Bermondsey galleries',d:'White Cube + Bermondsey Street area',x:'Tube to London Bridge ~15m'},
+    {t:'12:00pm',c:'dining',n:'Lunch · Bermondsey Street',d:'Good independents on the street',x:null},
+    {t:'2:00pm',c:'shopping',n:'L. Cornelissen & Son',d:'Great Russell St · Bloomsbury · Victorian art supply shop',x:'Tube from London Bridge ~20m'},
+    {t:'3:00pm',c:'shopping',n:'Present & Correct',d:'Exmouth Market · Clerkenwell',x:'Walk/tube from Holborn ~20m'},
+    {t:'4:00pm',c:'shopping',n:'Choosing Keeping',d:'Tower St · Covent Garden',x:'Cab from Clerkenwell ~15m · 10 min walk to Novello'},
+    {t:'6:00pm',c:'dining',n:'Dinner near Novello Theatre',d:'Aldwych area · pre-show',x:null},
+    {t:'7:30pm',c:'shows',n:'Mamma Mia! · Novello Theatre',d:'7:30pm · 2h30',x:'Ends ~9:30pm'},
+  ]},
+  {short:'Sat 25',date:'Saturday 25 July',hl:'Final morning · fly home',acts:[
+    {t:'9:00am',c:'dining',n:'Final brunch · Soho',d:'Last meal in London',x:null},
+    {t:'10:00am',c:'rest',n:'Last wander · flex morning',d:'Richmond if missed Saturday 18th',x:'Train Waterloo → Richmond ~30m · back by 1pm'},
+    {t:'2:00pm',c:'travel',n:'Head to Heathrow',d:'Black cab · ~50 min',x:'Leave hotel by 2pm'},
+    {t:'4:30pm',c:'travel',n:'BA49 departs · Heathrow → Seattle',d:'Arrives ~6:25pm Seattle time',x:'Good trip!'},
+  ]},
+];
 
+let day = 0, open = null;
+
+function render(){
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = DAYS.map((d,i)=>`<button onclick="sel(${i})" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1px solid ${i===day?'transparent':'#E0DBD0'};background:${i===day?'#1A1A1A':'#FFFFFF'};color:${i===day?'#FFFFFF':'#6B6B6B'};font-size:13px;font-weight:500;cursor:pointer">${d.short}</button>`).join('');
+
+  document.getElementById('day-headline').textContent = DAYS[day].hl;
+
+  const acts = document.getElementById('activities');
+  acts.innerHTML = DAYS[day].acts.map((a,i)=>{
+    const co = C[a.c];
+    const isOpen = open===i;
+    return `<div onclick="tog(${i})" style="background:#FFFFFF;border-radius:10px;margin-bottom:8px;border-left:3px solid ${co.hex};cursor:pointer;transition:box-shadow .15s" onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.07)'" onmouseout="this.style.boxShadow='none'">
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 14px">
+        <span style="font-size:12px;font-weight:600;color:#8A8A8A;width:52px;flex-shrink:0">${a.t}</span>
+        <span style="flex:1;font-size:14px;font-weight:500;color:#1A1A1A">${a.n}</span>
+        <span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;background:${co.bg};color:${co.hex};flex-shrink:0">${co.label}</span>
+        <span style="font-size:10px;color:#8A8A8A">${isOpen?'▲':'▼'}</span>
+      </div>
+      ${isOpen?`<div style="padding:0 14px 14px 76px;font-size:13px;line-height:1.6">
+        ${a.d?`<p style="color:#5A5A5A;margin:0 0 4px">${a.d}</p>`:''}
+        ${a.x?`<p style="color:#8A8A8A;font-size:12px;margin:0">ℹ️ ${a.x}</p>`:''}
+      </div>`:''}
+    </div>`;
+  }).join('');
+
+  const nav = document.getElementById('daynav');
+  nav.innerHTML = `
+    ${day>0?`<button onclick="sel(${day-1})" style="padding:8px 16px;border-radius:20px;border:1px solid #E0DBD0;background:#FFFFFF;font-size:13px;font-weight:500;cursor:pointer;color:#1A1A1A">← ${DAYS[day-1].short}</button>`:'<span></span>'}
+    ${day<DAYS.length-1?`<button onclick="sel(${day+1})" style="padding:8px 16px;border-radius:20px;border:1px solid #E0DBD0;background:#FFFFFF;font-size:13px;font-weight:500;cursor:pointer;color:#1A1A1A">${DAYS[day+1].short} →</button>`:'<span></span>'}
+  `;
+}
+
+function sel(i){ day=i; open=null; render(); const t=document.querySelectorAll('#tabs button'); if(t[i]) t[i].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }
+function tog(i){ open=open===i?null:i; render(); }
+
+render();
+</script>
 </body>
 </html>

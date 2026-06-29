@@ -32,60 +32,60 @@ const C = {
 
 const DAYS = [
   {short:'Sat 18',date:'Saturday 18 July',hl:'Arrival · Bancone · Richmond',acts:[
-    {t:'1:45pm',c:'travel',n:'BA48 lands · Heathrow T5',d:'Elizabeth Line or taxi to Soho',x:'~50 min to hotel'},
-    {t:'3:00pm',c:'rest',n:'Check in · The Resident Soho',d:'Golden Square area',x:null},
-    {t:'5:00pm',c:'dining',n:'Bancone · Golden Square',d:'5:00–6:30pm · Italian pasta',x:'Ref #99KP6C4DR75R · 5 min walk from hotel'},
-    {t:'7:00pm',c:'outdoors',n:'Ted Lasso · Richmond',d:'Paved Court · Richmond Green · Prince\'s Head · Thames',x:'Train from Waterloo ~30m · golden hour light · back by 9:30pm'},
+    {t:'1:45pm',c:'travel',n:'BA48 lands · Heathrow T5',d:'Elizabeth Line or taxi to Soho',x:'~50 min to hotel',loc:'Heathrow Terminal 5, Longford, Hounslow TW6 2GA'},
+    {t:'3:00pm',c:'rest',n:'Check in · The Resident Soho',d:'Golden Square area',x:null,loc:'The Resident Soho, 19-21 Soho Square, London W1D 3QN'},
+    {t:'5:00pm',c:'dining',n:'Bancone · Golden Square',d:'5:00–6:30pm · Italian pasta',x:'Ref #99KP6C4DR75R · 5 min walk from hotel',loc:'Bancone, 1 Golden Square, London W1F 9JA'},
+    {t:'7:00pm',c:'outdoors',n:'Ted Lasso · Richmond',d:'Paved Court · Richmond Green · Prince\'s Head · Thames',x:'Train from Waterloo ~30m · golden hour light · back by 9:30pm',loc:'Richmond Green, Richmond, London TW9 1QH'},
   ]},
   {short:'Sun 19',date:'Sunday 19 July',hl:'Flower Market · British Library · Fallow',acts:[
-    {t:'9:00am',c:'shopping',n:'Columbia Road Flower Market',d:'Spitalfields · Sunday only · open till 3pm',x:'Cab from Soho ~30m · leave by 10:30'},
-    {t:'1:00pm',c:'culture',n:'British Library · King\'s Cross',d:'Treasures Gallery · Magna Carta · Beatles lyrics · Da Vinci',x:'Closes 5pm · cab from Soho ~20m'},
-    {t:'8:30pm',c:'dining',n:'Fallow · St James\'s Market',d:'8:30pm reservation',x:'5 min walk from Soho'},
+    {t:'9:00am',c:'shopping',n:'Columbia Road Flower Market',d:'Spitalfields · Sunday only · open till 3pm',x:'Cab from Soho ~30m · leave by 10:30',loc:'Columbia Road Flower Market, London E2 7RG'},
+    {t:'1:00pm',c:'culture',n:'British Library · King\'s Cross',d:'Treasures Gallery · Magna Carta · Beatles lyrics · Da Vinci',x:'Closes 5pm · cab from Soho ~20m',loc:'British Library, 96 Euston Road, London NW1 2DB'},
+    {t:'8:30pm',c:'dining',n:'Fallow · St James\'s Market',d:'8:30pm reservation',x:'5 min walk from Soho',loc:'Fallow Restaurant, St James\'s Market, London SW1Y 4AH'},
   ]},
   {short:'Mon 20',date:'Monday 20 July',hl:'LNER to Edinburgh',acts:[
-    {t:'9:00am',c:'train',n:'Kings Cross · LNER departs 09:30',d:'Scenic east coast route · ~4h journey',x:'Tube from Soho ~15m · be there by 9:00'},
-    {t:'1:38pm',c:'train',n:'Arrive Edinburgh Waverley',d:'Walk to The Scotsman · 5 min',x:'North Bridge · right on the Old Town edge'},
-    {t:'3:00pm',c:'culture',n:'Royal Mile',d:'St Giles\' Cathedral · Old Town explore',x:null},
-    {t:'7:00pm',c:'dining',n:'Dinner · Old Town',d:'Edinburgh restaurant',x:null},
+    {t:'9:00am',c:'train',n:'Kings Cross · LNER departs 09:30',d:'Scenic east coast route · ~4h journey',x:'Tube from Soho ~15m · be there by 9:00',loc:'King\'s Cross Station, London N1 9AP'},
+    {t:'1:38pm',c:'train',n:'Arrive Edinburgh Waverley',d:'Walk to The Scotsman · 5 min',x:'North Bridge · right on the Old Town edge',loc:'Edinburgh Waverley Station, Edinburgh EH1 1BB'},
+    {t:'3:00pm',c:'culture',n:'Royal Mile',d:'St Giles\' Cathedral · Old Town explore',x:null,loc:'Royal Mile, Edinburgh EH1 1SR'},
+    {t:'7:00pm',c:'dining',n:'Dinner · Old Town',d:'Edinburgh restaurant',x:null,loc:'Old Town, Edinburgh EH1'},
   ]},
   {short:'Tue 21',date:'Tuesday 21 July',hl:'Castle · Loch Lomond',acts:[
-    {t:'9:00am',c:'dining',n:'Lannan Bakery · Stockbridge',d:'Pre-order pickup · award-winning viennoiserie',x:'Cab ~10m from hotel · open 9am'},
-    {t:'11:30am',c:'culture',n:'Edinburgh Castle',d:'Pre-booked 11:30am · allow ~2 hrs',x:null},
-    {t:'1:30pm',c:'dining',n:'Lunch near Castlehill',d:'Quick bite before trains',x:null},
-    {t:'2:30pm',c:'train',n:'EDI → Glasgow → Loch Lomond',d:'West Highland Line · scenic',x:'Left-side seat for best loch views going north'},
-    {t:'4:20pm',c:'outdoors',n:'Loch Lomond',d:'Walk · views · coffee · Highland scenery',x:'Return train departs ~6:30pm'},
-    {t:'6:30pm',c:'train',n:'Return · Balloch → Glasgow → EDI',d:'Arrive Edinburgh ~8:20pm',x:null},
-    {t:'8:30pm',c:'dining',n:'Late dinner · Stockbridge or New Town',d:'Edinburgh evening',x:null},
+    {t:'9:00am',c:'dining',n:'Lannan Bakery · Stockbridge',d:'Pre-order pickup · award-winning viennoiserie',x:'Cab ~10m from hotel · open 9am',loc:'Lannan Bakery, 35 Hamilton Place, Edinburgh EH3 5BA'},
+    {t:'11:30am',c:'culture',n:'Edinburgh Castle',d:'Pre-booked 11:30am · allow ~2 hrs',x:null,loc:'Edinburgh Castle, Castlehill, Edinburgh EH1 2NG'},
+    {t:'1:30pm',c:'dining',n:'Lunch near Castlehill',d:'Quick bite before trains',x:null,loc:'Castlehill, Edinburgh EH1 2NE'},
+    {t:'2:30pm',c:'train',n:'EDI → Glasgow → Loch Lomond',d:'West Highland Line · scenic',x:'Left-side seat for best loch views going north',loc:'Glasgow Queen Street Station, Glasgow G1 2AF'},
+    {t:'4:20pm',c:'outdoors',n:'Loch Lomond',d:'Walk · views · coffee · Highland scenery',x:'Return train departs ~6:30pm',loc:'Loch Lomond Shores, Balloch, Alexandria G83 8QL'},
+    {t:'6:30pm',c:'train',n:'Return · Balloch → Glasgow → EDI',d:'Arrive Edinburgh ~8:20pm',x:null,loc:'Balloch Station, Balloch G83 8LQ'},
+    {t:'8:30pm',c:'dining',n:'Late dinner · Stockbridge or New Town',d:'Edinburgh evening',x:null,loc:'Stockbridge, Edinburgh EH4 1HH'},
   ]},
   {short:'Wed 22',date:'Wednesday 22 July',hl:'LNER home · Oh, Mary!',acts:[
-    {t:'9:00am',c:'rest',n:'Final Edinburgh morning',d:'Breakfast · last wander',x:'Dean Village or slow start'},
-    {t:'11:00am',c:'train',n:'LNER departs Edinburgh 11:00',d:'Arrives Kings Cross 15:10',x:'Relax on board'},
-    {t:'3:30pm',c:'rest',n:'Back at The Resident Soho',d:'Freshen up',x:'Cab from Kings Cross ~20m'},
-    {t:'6:00pm',c:'dining',n:'Dinner near Trafalgar Theatre',d:'Pre-show · St Martin\'s Lane area',x:'Theatre is 15 min walk from hotel'},
-    {t:'7:30pm',c:'shows',n:'Oh, Mary! · Trafalgar Theatre',d:'80 min · no interval · Cole Escola in the title role',x:'Ends ~9:00pm'},
+    {t:'9:00am',c:'rest',n:'Final Edinburgh morning',d:'Breakfast · last wander',x:'Dean Village or slow start',loc:'Dean Village, Edinburgh EH4 3BQ'},
+    {t:'11:00am',c:'train',n:'LNER departs Edinburgh 11:00',d:'Arrives Kings Cross 15:10',x:'Relax on board',loc:'Edinburgh Waverley Station, Edinburgh EH1 1BB'},
+    {t:'3:30pm',c:'rest',n:'Back at The Resident Soho',d:'Freshen up',x:'Cab from Kings Cross ~20m',loc:'The Resident Soho, 19-21 Soho Square, London W1D 3QN'},
+    {t:'6:00pm',c:'dining',n:'Dinner near Trafalgar Theatre',d:'Pre-show · St Martin\'s Lane area',x:'Theatre is 15 min walk from hotel',loc:'St Martin\'s Lane, London WC2N 4ER'},
+    {t:'7:30pm',c:'shows',n:'Oh, Mary! · Trafalgar Theatre',d:'80 min · no interval · Cole Escola in the title role',x:'Ends ~9:00pm',loc:'Trafalgar Theatre, 14 Whitehall, London SW1A 2DY'},
   ]},
   {short:'Thu 23',date:'Thursday 23 July',hl:'Harry Potter · Disney\'s Hercules',acts:[
-    {t:'8:00am',c:'travel',n:'Euston → Watford Junction',d:'Train ~20m + shuttle ~15m',x:'Leave hotel by 7:45am'},
-    {t:'9:15am',c:'culture',n:'Harry Potter Studio Tour',d:'Great Hall · Diagon Alley · Platform 9¾ · ~3.5 hrs',x:'Book the earliest slot'},
-    {t:'1:00pm',c:'travel',n:'Return to London',d:'Shuttle + Watford Jn → Euston',x:'Back by ~2pm'},
-    {t:'2:00pm',c:'rest',n:'Rest · free afternoon',d:'Back at The Resident',x:null},
-    {t:'6:00pm',c:'dining',n:'Dinner near theatre',d:'Pre-show',x:null},
-    {t:'7:30pm',c:'shows',n:'Disney\'s Hercules',d:'7:30pm',x:'Ends ~9:30pm'},
+    {t:'8:00am',c:'travel',n:'Euston → Watford Junction',d:'Train ~20m + shuttle ~15m',x:'Leave hotel by 7:45am',loc:'London Euston Station, Euston Road, London NW1 2RT'},
+    {t:'9:15am',c:'culture',n:'Harry Potter Studio Tour',d:'Great Hall · Diagon Alley · Platform 9¾ · ~3.5 hrs',x:'Book the earliest slot',loc:'Warner Bros Studio Tour London, Studio Tour Drive, Leavesden WD25 7LR'},
+    {t:'1:00pm',c:'travel',n:'Return to London',d:'Shuttle + Watford Jn → Euston',x:'Back by ~2pm',loc:'Watford Junction Station, Station Road, Watford WD17 1AB'},
+    {t:'2:00pm',c:'rest',n:'Rest · free afternoon',d:'Back at The Resident',x:null,loc:'The Resident Soho, 19-21 Soho Square, London W1D 3QN'},
+    {t:'6:00pm',c:'dining',n:'Dinner near theatre',d:'Pre-show',x:null,loc:'West End, London W1'},
+    {t:'7:30pm',c:'shows',n:'Disney\'s Hercules',d:'7:30pm',x:'Ends ~9:30pm',loc:'West End, London W1'},
   ]},
   {short:'Fri 24',date:'Friday 24 July',hl:'Stationery crawl · Mamma Mia!',acts:[
-    {t:'10:00am',c:'culture',n:'Bermondsey galleries',d:'White Cube + Bermondsey Street area',x:'Tube to London Bridge ~15m'},
-    {t:'12:00pm',c:'dining',n:'Lunch · Bermondsey Street',d:'Good independents on the street',x:null},
-    {t:'2:00pm',c:'shopping',n:'L. Cornelissen & Son',d:'Great Russell St · Bloomsbury · Victorian art supply shop',x:'Tube from London Bridge ~20m'},
-    {t:'3:00pm',c:'shopping',n:'Present & Correct',d:'Exmouth Market · Clerkenwell',x:'Walk/tube from Holborn ~20m'},
-    {t:'4:00pm',c:'shopping',n:'Choosing Keeping',d:'Tower St · Covent Garden',x:'Cab from Clerkenwell ~15m · 10 min walk to Novello'},
-    {t:'6:00pm',c:'dining',n:'Dinner near Novello Theatre',d:'Aldwych area · pre-show',x:null},
-    {t:'7:30pm',c:'shows',n:'Mamma Mia! · Novello Theatre',d:'7:30pm · 2h30',x:'Ends ~9:30pm'},
+    {t:'10:00am',c:'culture',n:'Bermondsey galleries',d:'White Cube + Bermondsey Street area',x:'Tube to London Bridge ~15m',loc:'White Cube Bermondsey, 144-152 Bermondsey Street, London SE1 3TQ'},
+    {t:'12:00pm',c:'dining',n:'Lunch · Bermondsey Street',d:'Good independents on the street',x:null,loc:'Bermondsey Street, London SE1 3UH'},
+    {t:'2:00pm',c:'shopping',n:'L. Cornelissen & Son',d:'Great Russell St · Bloomsbury · Victorian art supply shop',x:'Tube from London Bridge ~20m',loc:'L Cornelissen and Son, 105 Great Russell Street, London WC1B 3RY'},
+    {t:'3:00pm',c:'shopping',n:'Present & Correct',d:'Exmouth Market · Clerkenwell',x:'Walk/tube from Holborn ~20m',loc:'Present and Correct, 23 Arlington Way, London EC1R 1UY'},
+    {t:'4:00pm',c:'shopping',n:'Choosing Keeping',d:'Tower St · Covent Garden',x:'Cab from Clerkenwell ~15m · 10 min walk to Novello',loc:'Choosing Keeping, 21 Tower Street, London WC2H 9NS'},
+    {t:'6:00pm',c:'dining',n:'Dinner near Novello Theatre',d:'Aldwych area · pre-show',x:null,loc:'Aldwych, London WC2B 4LD'},
+    {t:'7:30pm',c:'shows',n:'Mamma Mia! · Novello Theatre',d:'7:30pm · 2h30',x:'Ends ~9:30pm',loc:'Novello Theatre, Aldwych, London WC2B 4LD'},
   ]},
   {short:'Sat 25',date:'Saturday 25 July',hl:'Final morning · fly home',acts:[
-    {t:'9:00am',c:'dining',n:'Final brunch · Soho',d:'Last meal in London',x:null},
-    {t:'10:00am',c:'rest',n:'Last wander · flex morning',d:'Richmond if missed Saturday 18th',x:'Train Waterloo → Richmond ~30m · back by 1pm'},
-    {t:'2:00pm',c:'travel',n:'Head to Heathrow',d:'Black cab · ~50 min',x:'Leave hotel by 2pm'},
-    {t:'4:30pm',c:'travel',n:'BA49 departs · Heathrow → Seattle',d:'Arrives ~6:25pm Seattle time',x:'Good trip!'},
+    {t:'9:00am',c:'dining',n:'Final brunch · Soho',d:'Last meal in London',x:null,loc:'Soho, London W1D'},
+    {t:'10:00am',c:'rest',n:'Last wander · flex morning',d:'Richmond if missed Saturday 18th',x:'Train Waterloo → Richmond ~30m · back by 1pm',loc:'Richmond, London TW9 1QH'},
+    {t:'2:00pm',c:'travel',n:'Head to Heathrow',d:'Black cab · ~50 min',x:'Leave hotel by 2pm',loc:'Heathrow Terminal 5, Longford, Hounslow TW6 2GA'},
+    {t:'4:30pm',c:'travel',n:'BA49 departs · Heathrow → Seattle',d:'Arrives ~6:25pm Seattle time',x:'Good trip!',loc:'Heathrow Terminal 5, Longford, Hounslow TW6 2GA'},
   ]},
 ];
 
@@ -105,6 +105,27 @@ function toggle(label, active) {
   return `<button onclick="setView('${label.toLowerCase()}')" style="padding:6px 16px;border-radius:20px;border:1px solid ${active?'transparent':'#E0DBD0'};background:${active?'#1A1A1A':'#FFFFFF'};color:${active?'#FFFFFF':'#6B6B6B'};font-size:13px;font-weight:500;cursor:pointer">${label}</button>`;
 }
 
+function mapHTML(loc) {
+  if (!loc) return '';
+  const q = encodeURIComponent(loc);
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${q}`;
+  return `
+    <div style="margin-top:10px">
+      <iframe
+        src="https://maps.google.com/maps?q=${q}&output=embed&z=15"
+        width="100%"
+        height="180"
+        style="border:0;border-radius:8px;display:block"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <a href="${mapsUrl}" target="_blank" rel="noopener"
+         style="display:inline-block;margin-top:6px;font-size:11px;color:#2C6FA8;text-decoration:none;font-weight:500">
+        Open in Google Maps ↗
+      </a>
+    </div>`;
+}
+
 function renderDay() {
   const tabs = DAYS.map((d,i)=>`<button onclick="sel(${i})" style="flex-shrink:0;padding:6px 14px;border-radius:20px;border:1px solid ${i===day?'transparent':'#E0DBD0'};background:${i===day?'#1A1A1A':'#FFFFFF'};color:${i===day?'#FFFFFF':'#6B6B6B'};font-size:13px;font-weight:500;cursor:pointer">${d.short}</button>`).join('');
 
@@ -118,9 +139,10 @@ function renderDay() {
         <span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;background:${co.bg};color:${co.hex};flex-shrink:0">${co.label}</span>
         <span style="font-size:10px;color:#8A8A8A">${isOpen?'▲':'▼'}</span>
       </div>
-      ${isOpen?`<div style="padding:0 14px 14px 76px;font-size:13px;line-height:1.6">
-        ${a.d?`<p style="color:#5A5A5A;margin:0 0 4px">${a.d}</p>`:''}
-        ${a.x?`<p style="color:#8A8A8A;font-size:12px;margin:0">ℹ️ ${a.x}</p>`:''}
+      ${isOpen?`<div style="padding:0 14px 14px 14px;font-size:13px;line-height:1.6">
+        ${a.d?`<p style="color:#5A5A5A;margin:0 0 4px;padding-left:62px">${a.d}</p>`:''}
+        ${a.x?`<p style="color:#8A8A8A;font-size:12px;margin:0 0 4px;padding-left:62px">ℹ️ ${a.x}</p>`:''}
+        ${mapHTML(a.loc)}
       </div>`:''}
     </div>`;
   }).join('');
@@ -175,7 +197,7 @@ function renderWeek() {
     });
   });
 
-  g += `</div></div><p style="font-size:11px;color:#8A8A8A;margin-top:8px">Tap any activity to open day view with full details</p>`;
+  g += `</div></div><p style="font-size:11px;color:#8A8A8A;margin-top:8px">Tap any activity to open day view with full details and map</p>`;
   return g;
 }
 
@@ -197,10 +219,10 @@ function render() {
   }
 }
 
-function setView(v)         { view=v; render(); }
-function sel(i)             { day=i; open=null; render(); }
-function tog(i)             { open=open===i?null:i; render(); }
-function goToAct(di,ai)     { view='day'; day=di; open=ai; render(); window.scrollTo(0,0); }
+function setView(v)     { view=v; render(); }
+function sel(i)         { day=i; open=null; render(); }
+function tog(i)         { open=open===i?null:i; render(); }
+function goToAct(di,ai) { view='day'; day=di; open=ai; render(); window.scrollTo(0,0); }
 
 render();
 </script>

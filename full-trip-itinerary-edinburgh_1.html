@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>London + Edinburgh Itinerary</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --paper: #F1EFE9;
+    --card: #FAF8F3;
+    --ink: #2E2B27;
+    --muted: #8C857A;
+    --london: #B08D57;
+    --edinburgh: #6E5C7E;
+    --roast: #9C4B5C;
+    --potter: #5B4B8A;
+    --theatre: #A13D3D;
+    --travel: #6E6657;
+    --line: #E1DBCB;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 24px 14px 48px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  h1 {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 4px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin: 0 0 22px;
+    line-height: 1.5;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 18px;
+    border-left: 2px dashed var(--line);
+  }
+
+  .day {
+    position: relative;
+    background: var(--card);
+    border-radius: 10px;
+    margin-bottom: 14px;
+    padding: 14px 14px 12px 16px;
+    box-shadow: 0 1px 3px rgba(46,43,39,0.07);
+  }
+
+  .day::before {
+    content: "";
+    position: absolute;
+    left: -23px;
+    top: 18px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--cat-color, var(--travel));
+    border: 2px solid var(--paper);
+  }
+
+  .day-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .day-date {
+    font-family: 'Newsreader', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+  }
+  .day-date .dow {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: block;
+  }
+
+  .tag {
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    color: #fff;
+    background: var(--cat-color, var(--travel));
+    white-space: nowrap;
+  }
+
+  .day-title {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--cat-color, var(--ink));
+    margin: 0 0 8px;
+  }
+
+  ul.acts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.acts li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin-bottom: 5px;
+  }
+  ul.acts li:last-child { margin-bottom: 0; }
+  .when {
+    flex-shrink: 0;
+    width: 38px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    padding-top: 2px;
+  }
+
+  .cat-london { --cat-color: var(--london); }
+  .cat-edinburgh { --cat-color: var(--edinburgh); }
+  .cat-roast { --cat-color: var(--roast); }
+  .cat-potter { --cat-color: var(--potter); }
+  .cat-travel { --cat-color: var(--travel); }
+
+  .show-tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #fff;
+    background: var(--theatre);
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .flag-tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #fff;
+    background: #B5651D;
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .legend {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    font-size: 0.72rem;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  .note {
+    margin-top: 16px;
+    font-size: 0.74rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+  <h1>London + Edinburgh — Confirmed</h1>
+  <p class="subtitle">18–25 July · BA48 lands Heathrow ~1:45pm · BA49 departs Heathrow ~4:30pm · LNER 09:30–13:38 (Mon) · LNER 11:00–15:10 (Wed)</p>
+
+  <div class="timeline">
+
+    <div class="day cat-travel">
+      <div class="day-head">
+        <div class="day-date">18 <span class="dow">Sat</span></div>
+        <div class="tag">Arrival</div>
+      </div>
+      <p class="day-title">Touch down, then Richmond</p>
+      <ul class="acts">
+        <li><span class="when">PM</span> Land Heathrow ~1:45pm, transfer to <strong>The Resident Soho</strong>, check in</li>
+        <li><span class="when">PM</span> <span class="flag-tag">Ted Lasso</span> District Line or train from Waterloo to Richmond (~40 min). Paved Court alley — Ted's flat exterior + the Official Ted Lasso store right on the street. Richmond Green — where Roy coaches Phoebe's team and Ted gets nutmegged. The Prince's Head pub (the real Crown & Anchor, 300 years old). Thames Riverside path — Roy & Keeley's first date walk</li>
+        <li><span class="when">EVE</span> Easy dinner in Richmond or back in Soho, early night to shake the flight</li>
+      </ul>
+    </div>
+
+    <div class="day cat-roast">
+      <div class="day-head">
+        <div class="day-date">19 <span class="dow">Sun</span></div>
+        <div class="tag">Hawksmoor</div>
+      </div>
+      <p class="day-title">Flowers, then the roast + library</p>
+      <ul class="acts">
+        <li><span class="when">AM</span> Columbia Road Flower Market (Sunday-only)</li>
+        <li><span class="when">MID</span> <strong>Hawksmoor (Air Street)</strong> — 11:00-12:00 seating, Sunday roast</li>
+        <li><span class="when">PM</span> District Line to King's Cross (or short walk from Soho), <strong>British Library</strong> (11am–5pm) — wander the Treasures Gallery: Magna Carta, Beatles lyrics, Leonardo da Vinci manuscripts, Gutenberg Bible. Free entry</li>
+      </ul>
+    </div>
+
+    <div class="day cat-edinburgh">
+      <div class="day-head">
+        <div class="day-date">20 <span class="dow">Mon</span></div>
+        <div class="tag">Depart for EDI</div>
+      </div>
+      <p class="day-title">North by train</p>
+      <ul class="acts">
+        <li><span class="when">AM</span> LNER train, Kings Cross 09:30 → Edinburgh Waverley 13:38 (~4h20m, scenic east coast route)</li>
+        <li><span class="when">PM</span> Arrive early afternoon, check into <strong>The Scotsman</strong> (North Bridge — right on the edge of Old Town, five minutes from the Royal Mile). Walk the Royal Mile, St Giles' Cathedral</li>
+        <li><span class="when">EVE</span> Dinner in the Old Town</li>
+      </ul>
+    </div>
+
+    <div class="day cat-edinburgh">
+      <div class="day-head">
+        <div class="day-date">21 <span class="dow">Tue</span></div>
+        <div class="tag">Edinburgh</div>
+      </div>
+      <p class="day-title">Castle, crags, paper goods</p>
+      <ul class="acts">
+        <li><span class="when">AM</span> Edinburgh Castle (book ahead)</li>
+        <li><span class="when">MID</span> Arthur's Seat hike for skyline views, or National Museum of Scotland if you'd rather stay low-key</li>
+        <li><span class="when">PM</span> Stationery stop at Paper Tiger (independent since 1981, design-led cards & stationery)</li>
+        <li><span class="when">EVE</span> Dinner in Stockbridge or New Town — quieter, more residential side of the city</li>
+      </ul>
+    </div>
+
+    <div class="day cat-edinburgh">
+      <div class="day-head">
+        <div class="day-date">22 <span class="dow">Wed</span></div>
+        <div class="tag">Back to London</div>
+      </div>
+      <p class="day-title">Morning in Edinburgh, then home</p>
+      <ul class="acts">
+        <li><span class="when">AM</span> Final wander — Royal Yacht Britannia, Dean Village, or just a proper breakfast. Head to Waverley by ~10:30am</li>
+        <li><span class="when">MID</span> LNER train, Edinburgh Waverley 11:00 → Kings Cross 15:10</li>
+        <li><span class="when">PM</span> <span class="show-tag">Theatre</span> You'll land back in London by 3:10pm with plenty of breathing room. Quick bite near the theatre, then <strong>Oh, Mary!</strong> at the Trafalgar Theatre (7:30pm, 80 min, no interval) — Cole Escola in the title role</li>
+      </ul>
+    </div>
+
+    <div class="day cat-potter">
+      <div class="day-head">
+        <div class="day-date">23 <span class="dow">Thu</span></div>
+        <div class="tag">Harry Potter</div>
+      </div>
+      <p class="day-title">Wizarding world, half-day</p>
+      <ul class="acts">
+        <li><span class="when">AM</span> Euston → Watford Junction → shuttle to Warner Bros. Studio Tour</li>
+        <li><span class="when">MID</span> Studio Tour (Great Hall, Diagon Alley, Platform 9¾) — book well ahead</li>
+        <li><span class="when">PM</span> Return to central London by mid-late afternoon</li>
+        <li><span class="when">EVE</span> <span class="show-tag">Theatre</span> Dinner, then <strong>Disney's Hercules</strong> (7:30pm, 2h30)</li>
+      </ul>
+    </div>
+
+    <div class="day cat-london">
+      <div class="day-head">
+        <div class="day-date">24 <span class="dow">Fri</span></div>
+        <div class="tag">London</div>
+      </div>
+      <p class="day-title">Markets, galleries, paper crawl</p>
+      <ul class="acts">
+        <li><span class="when">AM</span> Maltby Street Market + Bermondsey gallery wander (White Cube etc.)</li>
+        <li><span class="when">MID</span> Lunch around Bermondsey or back over at Borough Market</li>
+        <li><span class="when">PM</span> Stationery crawl: L. Cornelissen & Son near the British Museum, Present & Correct in Bloomsbury, Choosing Keeping in Covent Garden</li>
+        <li><span class="when">EVE</span> <span class="show-tag">Theatre</span> Dinner, then <strong>Mamma Mia!</strong> at the Novello Theatre (7:30pm, 2h30)</li>
+      </ul>
+    </div>
+
+    <div class="day cat-travel">
+      <div class="day-head">
+        <div class="day-date">25 <span class="dow">Sat</span></div>
+        <div class="tag">Departure</div>
+      </div>
+      <p class="day-title">Last morning, then home</p>
+      <ul class="acts">
+        <li><span class="when">AM</span> Relaxed brunch, any final shopping or a last wander</li>
+        <li><span class="when">PM</span> Head to Heathrow, BA49 departs ~4:30pm</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot" style="background:var(--travel)"></span> Arrival / Departure</div>
+    <div class="legend-item"><span class="dot" style="background:var(--roast)"></span> Hawksmoor / food anchor</div>
+    <div class="legend-item"><span class="dot" style="background:var(--edinburgh)"></span> Edinburgh</div>
+    <div class="legend-item"><span class="dot" style="background:var(--potter)"></span> Harry Potter Studio Tour</div>
+    <div class="legend-item"><span class="dot" style="background:var(--london)"></span> London — culture & markets</div>
+    <div class="legend-item"><span class="dot" style="background:var(--theatre)"></span> Theatre</div>
+  </div>
+
+  <p class="note">Shows locked: <strong>Oh, Mary!</strong> Wednesday 7:30pm, <strong>Disney's Hercules</strong> Thursday 7:30pm, <strong>Mamma Mia!</strong> Friday 7:30pm. Everything else — castle Tuesday 11:30am, Loch Lomond afternoon, Paper Tiger stationery Tuesday, Lannan Bakery pre-order, British Library Sunday, stationery crawl Friday morning, Harry Potter Thursday morning — stays as planned.</p>
+
+</body>
+</html>
